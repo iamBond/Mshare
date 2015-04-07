@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+    
+    <LinearLayout 
+        android:id="@+id/linearLayout_1"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:gravity="center"
+        >
+        
+        <TextView 
+            android:id="@+id/textView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_view"
+            android:textSize="15sp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+    <LinearLayout 
+        android:id="@+id/linearlayout_2"
+        android:layout_below="@id/linearLayout_1"
+        android:layout_marginLeft="50dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        
+        <ImageButton 
+            android:id="@+id/button_weibo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:src="@drawable/umeng_socialize_sina_on"
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新浪微博"
+            />
+        
+        <ImageButton 
+            android:id="@+id/button_qq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:src="@drawable/umeng_socialize_qq_on"
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="QQ"
+            />
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:id="@+id/linearLayout_3"
+        android:layout_below="@id/linearLayout_1"
+        android:layout_toRightOf="@id/linearlayout_2"
+        android:layout_marginLeft="30dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        
+        <ImageButton 
+            android:id="@+id/button_qqzone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+			android:src="@drawable/umeng_socialize_qzone_on"
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="腾讯空间"
+            />
+        
+        <ImageButton 
+            android:id="@+id/button_weichat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+			android:src="@drawable/umeng_socialize_wechat"
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="微信"
+            />
+    </LinearLayout>
+</RelativeLayout>

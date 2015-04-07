@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">自定义分享UI</string>
+    <string name="custom">自定义分享界面 (directShare)</string>
+    <string name="custom_post">自定义分享界面 (postShare)</string>
+    <string name="text_view">分享</string>
+
+    <string name="errcode_success">发送成功</string>
+	<string name="errcode_cancel">发送取消</string>
+	<string name="errcode_deny">发送被拒绝</string>
+	<string name="errcode_unknown">发送返回</string>
+</resources>
