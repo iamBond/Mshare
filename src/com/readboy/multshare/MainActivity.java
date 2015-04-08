@@ -18,6 +18,7 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.readboy.multshare.*;
+import com.tencent.a.b.q;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.SendMessageToWX;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
@@ -28,6 +29,7 @@ import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners.SnsPostListener;
+import com.umeng.socialize.media.QQShareContent;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.sso.QZoneSsoHandler;
 import com.umeng.socialize.sso.UMQQSsoHandler;
@@ -87,7 +89,14 @@ public class MainActivity extends Activity {
 	}
 	
 	/**
-	 * 初始化SDK，添加一些平�?	 */
+	 * 初始化SDK，添加一些平�?	
+	 
+     * @功能描述 : 添加QQ平台支持 QQ分享的内容， 包含四种类型， 即单纯的文字、图片、音乐、视频. 参数说明 : title, summary,
+     *       image url中必须至少设置一个, targetUrl必须设置,网页地址必须以"http://"开头 . title :
+     *       要分享标题 summary : 要分享的文字概述 image url : 图片地址 [以上三个参数至少填写一个] targetUrl
+     *       : 用户点击该分享时跳转到的目标地址 [必填] ( 若不填写则默认设置为友盟主页 )
+     * @return
+     */
 	private void initSocialSDK() {
 		// 添加QQ平台
 		UMQQSsoHandler qqHandler = new UMQQSsoHandler(MainActivity.this,
@@ -99,7 +108,9 @@ public class MainActivity extends Activity {
 				"100424468", "c7394704798a158208a74ab60104f0ba");
 		qzoneHandler.addToSocialSDK();
 
-		
+//		 // 添加短信
+//        SmsHandler smsHandler = new SmsHandler();
+//        smsHandler.addToSocialSDK();
 
 		// 设置文字分享内容
 		mController.setShareContent("这是文字分享内容");
@@ -134,6 +145,17 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				platform = SHARE_MEDIA.QQ;
+				//设置要分享的内容
+				QQShareContent qqShareContent = new QQShareContent();
+				qqShareContent.setTitle("来自读书郎平板的分享");
+				qqShareContent.setShareContent("这是读书郎要分享的内容");
+				qqShareContent.setTargetUrl("http://www.readboy.com");
+				UMImage localImage = new UMImage(MainActivity.this, R.drawable.icon);//取得要分享的图片
+				qqShareContent.setShareImage(localImage);
+				//将分享内容添加到分享控制器
+				mController.setShareMedia(qqShareContent);
+				mController.setAppWebSite("http://www.readboy.com");
+				//分享出去
 				mController.postShare(MainActivity.this, platform, mShareListener);
 			}
 		});
@@ -260,7 +282,7 @@ public class MainActivity extends Activity {
 	protected void sendToWx(){
 		//初始化一个WXTextObject对象
 		WXTextObject textObj = new WXTextObject();
-		textObj.text= "这是要分享的内容";
+		textObj.text= "这是要分享的内容";//可以将便签的内容放入到这里
 		
 		//用WXTextObject对象初始化一个WXMediaMessage对象
 		WXMediaMessage msg = new WXMediaMessage();
