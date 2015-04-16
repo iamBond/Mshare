@@ -7,5 +7,6 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="lib" path="libs/libammsdk.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/SocialSDK_sms.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/SocialSDK_Sina.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
