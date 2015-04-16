@@ -1,109 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:paddingLeft="40dp"
-    android:paddingRight="40dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
     >
     
    
         
         <TextView 
             android:id="@+id/textView"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_view"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
             android:textSize="15sp"
-            android:layout_marginTop="15dp"
             />
-   
+   <LinearLayout 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       >
     
-    
+    <include 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:id="@+id/sublayout1"
+        layout="@layout/sublayout1"
+        />
+<!--  android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp" -->    
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:id="@+id/sublayout2"
+        layout="@layout/sublayout2"
+        />
+    </LinearLayout>
 
    
-        
+   <!--      
         <ImageButton 
-            android:id="@+id/button_weibo"
+            android:id="@+id/button_sms"
+            android:layout_marginTop="20dp"
             android:layout_below="@id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:background="#00000000"
-            android:src="@drawable/umeng_socialize_sina_on"
+            android:background="@drawable/sms_on"
             />
         
          <TextView
             android:id="@+id/text_sina" 
-            android:layout_below="@id/button_weibo"
+            android:layout_below="@id/button_sms"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="新浪微博"
+            android:text="@string/smstext"
             />
          
         <ImageButton 
-            android:id="@+id/button_qq"
-            android:layout_marginLeft="120dp"
+            android:id="@+id/button_qqzone"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="110dp"
             android:layout_below="@id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:src="@drawable/umeng_socialize_qq_on"
+            android:background="@drawable/qqzone_on"
             />
 
         <TextView 
-            android:id="@+id/text_qq"
-            android:layout_below="@id/button_qq"
+            android:id="@+id/text_qqzone"
+            android:layout_below="@id/button_qqzone"
+            android:layout_alignLeft="@id/button_qqzone"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/button_qq"
-            android:layout_marginLeft="25dp"
-            android:text="QQ"
+            android:text="@string/qqzonetext"
             />
     
      <ImageButton 
-            android:id="@+id/button_qqzone"
-            
+            android:id="@+id/button_weichat"
+            android:layout_marginTop="20dp"
             android:layout_below="@id/text_sina"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:src="@drawable/umeng_socialize_qzone_on"
+            
+            android:background="@drawable/weixin_on"
             />
     
         
         <TextView 
-            android:id="@+id/text_qqzone"
-            android:layout_below="@id/button_qqzone"
+            android:id="@+id/text_weichat"
+            android:layout_below="@id/button_weichat"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="腾讯空间"
+            android:text="@string/weichattext"
             />
        
         
         
         <ImageButton 
-            android:id="@+id/button_weichat"
-            android:layout_marginLeft="120dp"
-            android:layout_below="@id/text_qq"
+            android:id="@+id/button_sina"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="110dp"
+            android:layout_below="@id/text_qqzone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#00000000"
-			android:src="@drawable/umeng_socialize_wechat"
+            android:background="@drawable/sina_on"
             />
        
    
         
          <TextView 
-            android:layout_below="@id/button_weichat"
-            android:layout_alignLeft="@id/button_weichat"
+            android:layout_below="@id/button_sina"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="微信"
+             android:layout_marginTop="10dp"
+             android:layout_alignLeft="@id/button_sina"
+            android:text="@string/sina_text"
             />
     
-    
-</RelativeLayout>
+     -->
+</LinearLayout>

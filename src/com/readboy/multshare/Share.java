@@ -7,8 +7,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -28,6 +26,7 @@ import com.umeng.socialize.controller.listener.SocializeListeners.SnsPostListene
 import com.umeng.socialize.media.QQShareContent;
 import com.umeng.socialize.media.SinaShareContent;
 import com.umeng.socialize.sso.QZoneSsoHandler;
+import com.umeng.socialize.sso.SmsHandler;
 import com.umeng.socialize.sso.UMQQSsoHandler;
 
 public class Share {
@@ -42,7 +41,7 @@ public class Share {
 	private View viewLayout = null;
 	private PopupWindow popWin = null;
 	private ImageButton buttonWeibo = null;
-	private ImageButton buttonQQ = null;
+	private ImageButton buttonsms = null;
 	private ImageButton buttonQQZone = null;
 	private ImageButton buttonWeichat = null;
 	private String str = null;
@@ -84,8 +83,8 @@ public class Share {
 		qzoneHandler.addToSocialSDK();
 
 		// // 添加短信
-		// SmsHandler smsHandler = new SmsHandler();
-		// smsHandler.addToSocialSDK();
+		 SmsHandler smsHandler = new SmsHandler();
+		 smsHandler.addToSocialSDK();
 
 		// 设置文字分享内容
 		// mController.setShareContent("这是文字分享内容");
@@ -102,7 +101,7 @@ public class Share {
 		// 响应按钮，弹出分享框
 
 		popWin.showAsDropDown(v.findViewById(R.id.button),
-				-dip2px(activity, 120), 0);
+				-dip2px(activity, 130), 0);
 		buttonWeibo.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -117,21 +116,21 @@ public class Share {
 			}
 		});
 
-		buttonQQ.setOnClickListener(new OnClickListener() {
+		buttonsms.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				platform = SHARE_MEDIA.QQ;
+				platform = SHARE_MEDIA.SMS;
 				// 设置要分享的内容
-				QQShareContent qqShareContent = new QQShareContent();
+				/*QQShareContent qqShareContent = new QQShareContent();
 				qqShareContent.setTitle("来自读书郎的分享");
-				qqShareContent.setTargetUrl("http://www.readboy.com");
+				qqShareContent.setTargetUrl("http://www.readboy.com");*/
 				// UMImage localImage = new UMImage(MainActivity.this,
 				// R.drawable.icon);// 取得要分享的图片
 				// qqShareContent.setShareImage(localImage);
 				// 将分享内容添加到分享控制器
-				mController.setShareMedia(qqShareContent);
+//				mController.setShareMedia(qqShareContent);
 				mController.setAppWebSite("http://www.readboy.com");
 				// 分享出去
 				mController.postShare(activity, platform, mShareListener);
@@ -196,8 +195,8 @@ public class Share {
 					null);// 获得popupwindow布局view
 			// viewLayout.setBackground(getBackground());
 			buttonWeibo = (ImageButton) viewLayout
-					.findViewById(R.id.button_weibo);
-			buttonQQ = (ImageButton) viewLayout.findViewById(R.id.button_qq);
+					.findViewById(R.id.button_sina);
+			buttonsms = (ImageButton) viewLayout.findViewById(R.id.button_sms);
 			buttonQQZone = (ImageButton) viewLayout
 					.findViewById(R.id.button_qqzone);
 			buttonWeichat = (ImageButton) viewLayout
