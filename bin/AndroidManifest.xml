@@ -29,6 +29,7 @@
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="55122a7bfd98c531a90004a6" />
+        
 
         <activity
             android:name="com.umeng.socialize.view.ShareActivity"

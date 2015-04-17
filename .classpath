@@ -5,8 +5,10 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry exported="true" kind="lib" path="libs/libammsdk.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/SocialSDK_sms.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/SocialSDK_Sina.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/SocialSDK_WeiXin_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/SocialSDK_WeiXin_2.jar"/>
+	<classpathentry kind="lib" path="libs/umeng_social_sdk.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

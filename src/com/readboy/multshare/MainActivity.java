@@ -29,8 +29,9 @@ public class MainActivity extends Activity {
 		share = new Share(mController, MainActivity.this);
 		//设置qq，qqzone，sina的分享内容
 		mController.setShareContent("这是文字分享内容");
+	
 		//设置微信分享的内容
-		share.setWXShareContent("这是微信分享的内容");
+//		share.setWXShareContent("这是微信分享的内容");
 		//弹出分享面板
 		findViewById(R.id.button).setOnClickListener(new OnClickListener() {
 

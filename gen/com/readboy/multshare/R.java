@@ -128,9 +128,11 @@ public final class R {
         public static final int umeng_socialize_wechat=0x7f02004d;
         public static final int umeng_socialize_wechat_gray=0x7f02004e;
         public static final int umeng_socialize_window_shadow_pad=0x7f02004f;
-        public static final int umeng_socialize_x_button=0x7f020050;
-        public static final int up=0x7f020051;
-        public static final int weixin_on=0x7f020052;
+        public static final int umeng_socialize_wxcircle=0x7f020050;
+        public static final int umeng_socialize_wxcircle_gray=0x7f020051;
+        public static final int umeng_socialize_x_button=0x7f020052;
+        public static final int up=0x7f020053;
+        public static final int weixin_on=0x7f020054;
     }
     public static final class id {
         public static final int button=0x7f090000;

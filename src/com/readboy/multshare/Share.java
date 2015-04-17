@@ -14,20 +14,23 @@ import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import com.tencent.connect.share.QzoneShare;
 import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.SendMessageToWX;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import com.tencent.mm.sdk.openapi.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.WXTextObject;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners.SnsPostListener;
 import com.umeng.socialize.media.QQShareContent;
+import com.umeng.socialize.media.QZoneShareContent;
 import com.umeng.socialize.media.SinaShareContent;
+import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.sso.QZoneSsoHandler;
+import com.umeng.socialize.sso.SinaSsoHandler;
 import com.umeng.socialize.sso.SmsHandler;
 import com.umeng.socialize.sso.UMQQSsoHandler;
+import com.umeng.socialize.weixin.controller.UMWXHandler;
+import com.umeng.socialize.weixin.media.WeiXinShareContent;
 
 public class Share {
 
@@ -35,6 +38,7 @@ public class Share {
 
 	// 微信appid
 	private final static String APP_ID = "wx5c734d1f6b8e6db3";
+	private final static String AppSecret = "8b10580b2d23a8085c442229b879c55f";
 
 	private IWXAPI api = null;
 
@@ -75,16 +79,30 @@ public class Share {
 		// 添加QQ平台
 		UMQQSsoHandler qqHandler = new UMQQSsoHandler(activity, "100424468",
 				"c7394704798a158208a74ab60104f0ba");
+		qqHandler.setTargetUrl("http://www.readboy.com");
 		qqHandler.addToSocialSDK();
+		//新浪
+		SinaSsoHandler sinaSsoHandler = new SinaSsoHandler();
+		sinaSsoHandler.setTargetUrl("http://www.readboy.com");
 
 		// 添加QQ空间平台
 		QZoneSsoHandler qzoneHandler = new QZoneSsoHandler(activity,
 				"100424468", "c7394704798a158208a74ab60104f0ba");
+		qzoneHandler.setTargetUrl("http://www.readboy.com");
 		qzoneHandler.addToSocialSDK();
 
 		// // 添加短信
 		 SmsHandler smsHandler = new SmsHandler();
+		 smsHandler.setTargetUrl("http://www.readboy.com");
 		 smsHandler.addToSocialSDK();
+		 
+		 //添加微信
+		// 添加微信平台
+			UMWXHandler umwxHandler = new UMWXHandler(activity, APP_ID,
+					AppSecret);
+			umwxHandler.setTargetUrl("http://www.readboy.com");
+			umwxHandler.setTitle("来自读书郎");
+			umwxHandler.addToSocialSDK();
 
 		// 设置文字分享内容
 		// mController.setShareContent("这是文字分享内容");
@@ -143,21 +161,35 @@ public class Share {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				platform = SHARE_MEDIA.QZONE;
-				QQShareContent qqShareContent = new QQShareContent();
-				qqShareContent.setTargetUrl("http://www.readboy.com");
-				qqShareContent.setTitle("来自读书郎的分享");
+				QZoneShareContent qZoneShareContent = new QZoneShareContent();
+				qZoneShareContent.setTargetUrl("http://www.readboy.com");
+				qZoneShareContent.setShareImage(new UMImage(activity, R.drawable.ic_launcher));
+				
+				qZoneShareContent.setTitle("来自读书郎的分享");
 				mController.postShare(activity, platform, mShareListener);
 			}
 		});
 
+//		buttonWeichat.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				Toast.makeText(activity, "分享中...", Toast.LENGTH_SHORT).show();
+//				regToWx();
+//				sendToWx(str);
+//			}
+//		});
 		buttonWeichat.setOnClickListener(new OnClickListener() {
-
+			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Toast.makeText(activity, "分享中...", Toast.LENGTH_SHORT).show();
-				regToWx();
-				sendToWx(str);
+				platform = SHARE_MEDIA.WEIXIN;
+				WeiXinShareContent weiXinShareContent = new WeiXinShareContent();
+				weiXinShareContent.setTargetUrl("http://www.readboy.com");
+				weiXinShareContent.setTitle("来自读书郎的分享");
+				mController.postShare(activity, platform, mShareListener);
 			}
 		});
 
@@ -244,15 +276,19 @@ public class Share {
 	 * display.getMetrics(metrics); return metrics; }
 	 */
 
-	// 将appid注册到手机微信进程
+	/*// 将appid注册到手机微信进程
 	protected void regToWx() {
 		// 通过WXAPIFactory获得微信通信api
 		api = WXAPIFactory.createWXAPI(activity, APP_ID, true);
 		//如果微信客户端已经安装，则将APP_ID注册到微信进程，否则，提示没有检测到微信客户端
 		if (api.isWXAppInstalled()) {
 			api.registerApp(APP_ID);
+			api.openWXApp();
 		}else {
 			Toast.makeText(activity, "没见检测到微信客户端", Toast.LENGTH_SHORT).show();
+		}
+		if (api.openWXApp()) {
+			Toast.makeText(activity, "无法打开微信", Toast.LENGTH_LONG).show();
 		}
 		
 		
@@ -275,7 +311,7 @@ public class Share {
 
 		// 调用api接口发送数据到微信
 		api.sendReq(req);
-	}
+	}*/
 
 	public void setWXShareContent(String str) {
 		this.str = str;
